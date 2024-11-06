@@ -8,7 +8,7 @@ docker pull yourusername/dockerized-copa:latest
 docker run --rm --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -e DOCKER_CONFIG=/root/.docker \
-  p0906swap/dockerized-copa:latest \
+  pradhans0906/dockerized-copa:latest \
   "nginx:1.21.6" \ 
   "1.21.6-patched"
 
@@ -35,9 +35,9 @@ Internet access for pulling images
 Installation
 Using Docker Pull
 
-bashCopydocker pull p0906swap/dockerized-copa:latest
+bashCopydocker pull pradhans0906/dockerized-copa:latest
 Building from Source
-bashCopygit clone https://github.com/p0906swap/dockerized-copa.git
+bashCopygit clone https://github.com/pradhans0906/dockerized-copa.git
 cd dockerized-copa
 make build
 
