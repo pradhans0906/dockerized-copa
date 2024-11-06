@@ -44,7 +44,9 @@ Building from Source
 
 git clone https://github.com/pradhans0906/dockerized-copa.git
 cd dockerized-copa
-make build
+
+Build
+docker build --no-cache --build-arg copa_version=0.9.0 -t copa-local:0.9.0 .
 
 Usage Examples
 
