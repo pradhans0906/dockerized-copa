@@ -1,15 +1,20 @@
-A Docker-packaged version of Copacetic (COPA) for easy deployment and integration. This project provides a containerized solution for patching container images using COPA and Docker-scout.
+# Dockerized COPA - Containerized Copacetic for Image Patching
 
-Quick Start
-bashCopy# Pull the image
-docker pull yourusername/dockerized-copa:latest
+This project provides a Docker-packaged version of Copacetic (COPA) for easy deployment and integration, offering a containerized solution for patching container images with COPA.
 
-# Patch an image
+## Quick Start
+
+### Pull the image
+```bash
+docker pull pradhans0906/dockerized-copa:latest
+
+Patch an image
+
 docker run --rm --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -e DOCKER_CONFIG=/root/.docker \
   pradhans0906/dockerized-copa:latest \
-  "nginx:1.21.6" \ 
+  "nginx:1.21.6" \
   "1.21.6-patched"
 
 Features
@@ -21,7 +26,6 @@ Features
 🖥️ Simple CLI interface
 
 Documentation
-
 Usage Guide
 Development Guide
 Contributing
@@ -29,31 +33,39 @@ Changelog
 
 Requirements
 
-Docker Desktop (macOS))
+Docker Desktop (macOS)
+Docker-scout (scanner)
 Internet access for pulling images
 
-Installation
+### Installation
 Using Docker Pull
-
-bashCopydocker pull pradhans0906/dockerized-copa:latest
+docker pull pradhans0906/dockerized-copa:latest
 Building from Source
-bashCopygit clone https://github.com/pradhans0906/dockerized-copa.git
+
+git clone https://github.com/pradhans0906/dockerized-copa.git
 cd dockerized-copa
 make build
 
 Usage Examples
 
-Basic Usage
-bashCopy./scripts/patch.sh nginx:1.21.6
+./scripts/patch.sh nginx:1.21.6
 
 With Custom Tag
-bashCopy./scripts/patch.sh nginx:1.21.6 1.21.6-secure
+
+./scripts/patch.sh nginx:1.21.6 1.21.6-secure
 
 Contributing
+
 We welcome contributions! Please see our Contributing Guide for details.
+
 License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 Acknowledgments
 
 Copacetic Team for the original COPA tool
 Docker Team for Docker Scout integration
+
+
+
