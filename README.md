@@ -72,8 +72,8 @@ nginx                                     1.21.6                                
 
 Let's check the status of the Vulns.
 
-![cve status of the image](https://github.com/pradhans0906/dockerized-copa/tree/2e0b009d39188d776bcafc20f2a5d24aa999bfb9/screenshots)
-![copa patched status ](screenshots/screenshot1.png)
+![cve status of the image](screenshots/Screenshot 2024-11-07 at 00.03.34.png)
+![copa patched status ](screenshots/Screenshot 2024-11-07 at 00.03.57.png)
 
 
 
