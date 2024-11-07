@@ -26,7 +26,7 @@ if [ "$TAG_SUFFIX" != "patched" ]; then
         -v /var/run/docker.sock:/var/run/docker.sock \
         -e DOCKER_CONFIG=/root/.docker \
         ${EXTRA_ENV} \
-        yourusername/dockerized-copa:latest \
+        pradhans0906/dockerized-copa:latest \
         "$IMAGE" \
         "$TAG_SUFFIX"
 else
@@ -34,7 +34,7 @@ else
         -v /var/run/docker.sock:/var/run/docker.sock \
         -e DOCKER_CONFIG=/root/.docker \
         ${EXTRA_ENV} \
-        yourusername/dockerized-copa:latest \
+        pradhans0906/dockerized-copa:latest \
         "$IMAGE"
 fi
 
