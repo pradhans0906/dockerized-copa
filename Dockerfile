@@ -15,6 +15,7 @@ RUN apt-get update && \
     jq \
     lsb-release \
     --no-install-recommends && \
+    # Set up Docker repository
     mkdir -p /etc/apt/keyrings && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
@@ -31,13 +32,15 @@ RUN curl --retry 5 -fsSL -o copa.tar.gz https://github.com/project-copacetic/cop
     chmod +x /usr/local/bin/copa && \
     rm copa.tar.gz
 
-# Create credentials config
-RUN mkdir -p /root/.docker && \
-    echo '{"credsStore":""}' > /root/.docker/config.json
+# Create directory for docker config
+RUN mkdir -p /root/.docker
 
-# Create entrypoint script properly
+# Create entrypoint script with dynamic credentials handling
 RUN echo '#!/bin/bash' > /entrypoint.sh && \
     echo 'set -e' >> /entrypoint.sh && \
+    echo 'if [[ "$(uname)" == "Darwin" ]] || [[ -n "$FORCE_CREDS_CONFIG" ]]; then' >> /entrypoint.sh && \
+    echo '    echo "{\"credsStore\":\"\"}" > /root/.docker/config.json' >> /entrypoint.sh && \
+    echo 'fi' >> /entrypoint.sh && \
     echo 'docker pull "$1"' >> /entrypoint.sh && \
     echo 'copa patch --scanner docker-scout -i "$1" -t "${2:-patched}" --debug' >> /entrypoint.sh && \
     chmod +x /entrypoint.sh

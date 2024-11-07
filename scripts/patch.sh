@@ -13,19 +13,28 @@ fi
 IMAGE="$1"
 TAG_SUFFIX="${2:-patched}"  # Default to 'patched' if no suffix provided
 
+# Detect if running on macOS and set environment variable
+if [[ "$(uname)" == "Darwin" ]]; then
+    EXTRA_ENV="-e FORCE_CREDS_CONFIG=1"
+else
+    EXTRA_ENV=""
+fi
+
 # Run COPA with tag argument only if custom suffix is provided
 if [ "$TAG_SUFFIX" != "patched" ]; then
     docker run --rm --privileged \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -e DOCKER_CONFIG=/root/.docker \
-        copa-local:0.9.0 \
+        ${EXTRA_ENV} \
+        yourusername/dockerized-copa:latest \
         "$IMAGE" \
         "$TAG_SUFFIX"
 else
     docker run --rm --privileged \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -e DOCKER_CONFIG=/root/.docker \
-        copa-local:0.9.0 \
+        ${EXTRA_ENV} \
+        yourusername/dockerized-copa:latest \
         "$IMAGE"
 fi
 
