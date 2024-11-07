@@ -17,13 +17,16 @@ docker run --rm --privileged \
   "nginx:1.21.6" \
   "1.21.6-patched"
 
-Features
+Key Features:
 
-🐳 Fully containerized COPA installation
-🔄 Automatic image pulling
-🔍 Docker Scout integration
-🍎 macOS compatibility
-🖥️ Simple CLI interface
+🔒 Simple vulnerability patching for container images
+🐳 Fully containerized solution
+🔄 Works seamlessly with Docker Desktop
+🛠️ Easy-to-use command-line interface
+🔍 Integrated with Docker Scout for vulnerability scanning
+
+Perfect for DevOps engineers and developers who want to keep their container images secure without disrupting their existing workflows. Built for macOS users, compatible with Docker Desktop.
+
 
 Documentation
 Usage Guide
