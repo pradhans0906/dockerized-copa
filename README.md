@@ -72,10 +72,7 @@ nginx                                     1.21.6                                
 
 Let's check the status of the Vulns.
 
-![cve status of the image](screenshots/Screenshot 2024-11-07 at 00.03.34.png)
-![copa patched status ](screenshots/Screenshot 2024-11-07 at 00.03.57.png)
-
-
+![cve status of the image](screenshots/Screenshot%202024-11-07%20at%2000.03.34.png)
 
 Contributing
 
