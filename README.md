@@ -55,6 +55,7 @@ Usage Examples
 
 ./scripts/patch.sh nginx:1.21.6
 
+```bash
 #18 sending tarball 1.0s done
 #18 DONE 2.5s
 time="2024-11-06T23:47:39Z" level=debug msg="stopping session"
