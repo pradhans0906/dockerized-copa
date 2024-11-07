@@ -14,8 +14,7 @@ docker run --rm --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -e DOCKER_CONFIG=/root/.docker \
   pradhans0906/dockerized-copa:latest \
-  "nginx:1.21.6" \
-  "1.21.6-patched"
+  "nginx:1.21.6"
 
 Key Features:
 
