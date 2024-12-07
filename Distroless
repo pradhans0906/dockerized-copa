@@ -1,0 +1,31 @@
+# Build stage
+FROM debian:12-slim AS builder
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Get copa_version arg
+ARG copa_version=0.9.0
+
+# Install required packages for downloading and extracting Copa
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    tar \
+    ca-certificates \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
+
+# Download and extract Copa
+RUN curl --retry 5 -fsSL -o copa.tar.gz https://github.com/project-copacetic/copacetic/releases/download/v${copa_version}/copa_${copa_version}_linux_amd64.tar.gz && \
+    tar -zxvf copa.tar.gz && \
+    chmod +x copa
+
+# Final stage
+FROM gcr.io/distroless/static
+
+# Copy required components
+COPY --from=builder /copa /usr/local/bin/copa
+COPY --from=docker:24.0-cli /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+ENTRYPOINT ["/usr/local/bin/copa", "patch"]
+CMD ["--help"]
