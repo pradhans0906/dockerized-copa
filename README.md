@@ -2,6 +2,7 @@
 
 ```bash
 docker pull pradhans0906/dockerized-copa:latest
+docker pull pradhans0906/dockerized-copa:0.9.0-distroless
 ```
 
 ## Patch an image
