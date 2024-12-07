@@ -22,7 +22,6 @@ Key Features:
 🐳 Fully containerized solution
 🔄 Works seamlessly with Docker Desktop
 🛠️ Easy-to-use command-line interface
-🔍 Integrated with Docker Scout for vulnerability scanning
 
 Perfect for DevOps engineers and developers who want to keep their container images secure without disrupting their existing workflows. Built for macOS users, compatible with Docker Desktop.
 
@@ -36,7 +35,7 @@ Changelog
 Requirements
 
 Docker Desktop (macOS)
-Docker-scout (scanner)
+Docker-scout (scanner) To get the CVE details.
 Internet access for pulling images
 
 ### Installation
@@ -52,7 +51,7 @@ docker build --no-cache --build-arg copa_version=0.9.0 -t copa-local:0.9.0 .
 
 Usage Examples
 
-./scripts/patch.sh nginx:1.21.6
+./scripts/patch.sh nginx:1.21.6 - To patch Nginx
 
 ```bash
 #18 sending tarball 1.0s done
@@ -91,7 +90,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Acknowledgments
 
 Copacetic Team for the original COPA tool
-Docker Team for Docker Scout integration
+Docker Team for Docker Scout
 
 
 
