@@ -20,13 +20,28 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
-      - name: Build and push
+      - name: Build and push standard version
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile
           build-args: |
             BUILD_ENV=ci
+            copa_version=0.9.0
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/dockerized-copa:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/dockerized-copa:0.9.0
+
+      - name: Build and push distroless version
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Distroless
+          build-args: |
+            BUILD_ENV=ci
+            copa_version=0.9.0
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/dockerized-copa:distroless
+            ${{ secrets.DOCKERHUB_USERNAME }}/dockerized-copa:0.9.0-distroless

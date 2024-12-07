@@ -1,5 +1,4 @@
 FROM debian:12-slim
-
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Get copa_version arg
@@ -12,7 +11,6 @@ RUN apt-get update && \
     ca-certificates \
     curl \
     gnupg \
-    jq \
     lsb-release \
     --no-install-recommends && \
     # Set up Docker repository
@@ -42,7 +40,7 @@ RUN echo '#!/bin/bash' > /entrypoint.sh && \
     echo '    echo "{\"credsStore\":\"\"}" > /root/.docker/config.json' >> /entrypoint.sh && \
     echo 'fi' >> /entrypoint.sh && \
     echo 'docker pull "$1"' >> /entrypoint.sh && \
-    echo 'copa patch --scanner docker-scout -i "$1" -t "${2:-patched}" --debug' >> /entrypoint.sh && \
+    echo 'copa patch -i "$1" -t "${2:-patched}" --debug' >> /entrypoint.sh && \
     chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
